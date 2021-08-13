@@ -1,0 +1,89 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Fuel Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">FuelDetails</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+     
+      <div class="row">
+
+
+
+        
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <div class="card-tools">
+                    <a class="btn btn-info" href="/#/addfuel">
+                        <i class="fas fa-plus"> Add New FuelDetails</i>
+                    </a>
+                  </div>
+              </div>
+             
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <!-- <div class="table-responsive p-0"> -->
+                <table class="table table-hover text-nowrap">
+                  <thead>                  
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Vehicle Name</th>
+                      <th>Driver Name</th>                     
+                      <th>Date</th>
+                      <th>Amount</th>
+                     
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let d of fuellist;let i=index;"> 
+                      <td>{{i+1}}</td>
+                      <td>{{d.Vehiclename}}</td>
+                      <td>
+                       {{d.drivername}}
+                      </td>
+                      <td>{{d.fueldate}}</td>
+                      <td>{{d.totalamount}}</td>
+                     
+                      <td>
+                        <button [routerLink]="['/addfuel']" [queryParams]="{id: d.id}" class="btn btn-default btn-sm" style="cursor: pointer;"><i class="far fa-edit text-primary"></i></button>
+                        <button class="btn btn-default btn-sm" (click)="delete(d.id)" style="margin-left: 5px;"><i class="fa fa-trash text-danger"></i></button>  
+                                              </td>
+                    </tr>
+                  
+                  </tbody>
+                </table>
+                <!-- </div> -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item" [ngClass]="{'disabled': pageNumber === 1}"><a class="page-link" style="cursor: pointer;" (click)="prev()">&laquo;</a></li>
+                
+                  <li class="page-item" [ngClass]="{'disabled': pageNumber === lastPage}"><a class="page-link" style="cursor: pointer;" (click)="next()">&raquo;</a></li>
+              
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+
+    
+    </div>
+      </div></div></section></div> 

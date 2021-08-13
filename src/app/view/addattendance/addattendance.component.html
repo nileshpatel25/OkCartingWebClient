@@ -1,0 +1,106 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Add Attendance Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Add new Attendance info</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add new Attendance</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form [formGroup]="aform" (ngSubmit)="addattendance()">
+              <div class="card-body">
+
+                <div class="row">
+                   
+                    <div class="col-sm-4">
+                <div class="form-group">
+                    <!-- <mat-form-field  class="col-12">
+                        <mat-label>Select Driver Name</mat-label>
+                        <mat-select formControlName="driverid" required>
+                          <mat-option *ngFor="let v of driverlist" [value]="v.id">
+                            {{v.name}} 
+                          </mat-option>
+                        </mat-select>
+                     
+                      </mat-form-field>-->
+                      <label for="exampleInputEmail1">Driver Name</label> 
+                      <select class="form-control" formControlName="driverid" (change)="getdriverdetails($event.target.value)">
+                       <option value="">Select Driver Name</option>
+                       <option *ngFor="let d of driverlist" value="{{d.id}}">{{d.name}}</option>
+                      
+                     </select>
+                     <span class="text-danger" *ngIf="!aform.get('driverid').value && submitted">Driver required!</span> 
+                    </div> </div> 
+                                                                    <div class="col-sm-4">
+
+                                                                    <div class="form-group">
+                                                                      <!-- <mat-form-field>
+                                                                        <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+                                                                        <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+                                                                         Amount<strong>required!</strong>
+                                                                        </mat-error>
+                                                                      </mat-form-field> -->
+                                                                        <label for="exampleInputPassword1">Status</label>
+                                                                        <select class="form-control"  formControlName="status">
+                                                                          <option value="">Select Status</option>
+                                                                            <option value="0">Full Day</option>
+                                                                            <option value="1">Half Day</option>
+                                                                            <option value="2">Absence</option>
+                                                                          </select>
+                                                                        <span class="text-danger" *ngIf="!aform.get('status').value && submitted">Status required!</span> 
+                                                                      </div></div>
+                                                                      <div class="col-sm-4">
+
+                                                                        <div class="form-group">
+                                                                          <!-- <mat-form-field  class="col-12"> 
+                                                                            <mat-label>Date</mat-label>
+                                                                            <input matInput formControlName="fueldate" [matDatepicker]="picker" placeholder="Date" required>
+                                                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #picker></mat-datepicker>
+                                                                            <mat-error *ngIf="!fform.get('fueldate').value && submitted">
+                                                                              date <strong>required!</strong>
+                                                                            </mat-error>
+                                                                          </mat-form-field> -->
+                                                                            <label for="exampleInputPassword1">Date</label>
+                                                                            <input type="Date" class="form-control" formControlName="dtattencanceDate" placeholder="Date">
+                                                                            <span class="text-danger" *ngIf="!aform.get('dtattencanceDate').value && submitted">  date required!</span>
+                                                                          </div>
+                                                                        </div>
+                                                                         </div>
+                                                                      </div>
+             
+
+                                                                    <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" style="margin-left: 5px;" >Clear</button>
+                <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/driverattendance']" >Back</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+     </div></section></div> 

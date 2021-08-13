@@ -1,0 +1,97 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Vehicle</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/admindashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Vehicle</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-5">
+              <!-- general form elements -->
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">Add new vehicle</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form [formGroup]="vmform" (ngSubmit)="addvehiclerequest()">
+                    <div class="card-body">
+                      <div class="form-group">
+                       
+                      <input placeholder="Vehicle name"  class="form-control"  formControlName="vehiclename" required>
+                      <span class="text-danger" *ngIf="!vmform.get('vehiclename').value && vsubmitted">Vehicle Name required!</span>
+                    
+                    
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                     
+                      <!-- <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/jobworkdetail']" >Back</a> -->
+                    </div>
+                  </form>
+              </div>
+              <!-- /.card -->
+            </div>
+        
+            <div class="col-md-7">
+                <div class="card card-info">
+                  <!-- <div class="card-header">
+                    <h3 class="card-title">Vehicle List</h3>
+                  </div> -->
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="card-body table-responsive p-0">
+                      <!-- <div class="table-responsive p-0"> -->
+                      <table class="table table-hover text-nowrap">
+                      <thead>                  
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>VehicleName</th>
+                        
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let v of allvehiclelist;let  i=index;">
+                          <td>{{i+1}}</td>
+                          <td>{{v.vehiclename}}</td>
+                         
+                          <td>
+    <button (click)="edit(v.id)" class="btn btn-default btn-sm" style="cursor: pointer;"><i class="far fa-edit text-primary"></i></button>
+    <button class="btn btn-default btn-sm" (click)="delete(v.id)" style="margin-left: 5px;"><i class="fa fa-trash text-danger"></i></button>  
+     
+  
+</td>
+                        </tr>
+                         </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer clearfix">
+                    <!-- <ul class="pagination pagination-sm m-0 float-right">
+                      <li class="page-item" [ngClass]="{'disabled': pageNumber === 1}"><a class="page-link" style="cursor: pointer;" (click)="prev()">&laquo;</a></li>
+                    
+                      <li class="page-item" [ngClass]="{'disabled': pageNumber === lastPage}"><a class="page-link" style="cursor: pointer;" (click)="next()">&raquo;</a></li>
+                    </ul> -->
+                  </div>
+                </div>
+                <!-- /.card -->
+    
+                </div>
+        </div>
+          </div></div></section>
+    </div>
+

@@ -1,0 +1,144 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Add Customer Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">addnewcustomer</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add new Customer</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form [formGroup]="cform" (ngSubmit)="addcustomer()">
+              <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <input matInput placeholder="Customer Name"  formControlName="name" required>
+                    <mat-error *ngIf="!cform.get('name').value && submitted">
+                      Customer Name <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <!-- <label for="exampleInputPassword1"> Name</label> -->
+                  <!-- <input type="text" class="form-control" formControlName="name" placeholder="Customer name">
+                  <span class="text-danger" *ngIf="!cform.get('name').value && submitted">customer name required!</span> -->
+                </div>
+                    </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <mat-form-field class="col-12">
+                    <input matInput placeholder="Mobile No"  (keypress)="keyPress($event)" maxlength="10" formControlName="mobileno" required>
+                    <mat-error *ngIf="!cform.get('mobileno').value && submitted">
+                      customer mobileno <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field>
+                    <!-- <label for="exampleInputPassword1">Mobile No</label> -->
+                    <!-- <input type="text" class="form-control" (keypress)="keyPress($event)" maxlength="10" formControlName="mobileno" placeholder="Mobile No">
+                    <span class="text-danger" *ngIf="!cform.get('mobileno').value && submitted">customer mobile-no required!</span> -->
+                  </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                          <mat-form-field class="col-12">
+                            <input matInput placeholder="Other mobile no(optional) "  (keypress)="keyPress($event)" maxlength="10" formControlName="othermobileno">
+                          
+                          </mat-form-field>
+                            <!-- <label for="exampleInputPassword1">Other Mobile No</label> -->
+                            <!-- <input type="text" class="form-control" (keypress)="keyPress($event)" maxlength="10" formControlName="othermobileno" placeholder="Other mobile no"> -->
+                           
+                          </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                  <mat-form-field class="col-12">
+                                    <input matInput placeholder="Customer Address"  formControlName="address" required>
+                                    <mat-error *ngIf="!cform.get('address').value && submitted">
+                                      Customer Address <strong>required!</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                    <!-- <label for="exampleInputPassword1">Address</label> -->
+                                    <!-- <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                                    <span class="text-danger" *ngIf="!cform.get('address').value && submitted">customer address required!</span> -->
+                                  </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                          <mat-form-field class="col-12">
+                                            <input matInput placeholder="Customer Additional Address(optional)"  formControlName="address2">
+                                            <!-- <mat-error *ngIf="!dform.get('address').value && submitted">
+                                              Driver Address <strong>required!</strong>
+                                            </mat-error> -->
+                                          </mat-form-field>
+                                          
+                                          <!-- <label for="exampleInputPassword1">Address 2</label> -->
+                                            <!-- <input type="text" class="form-control" formControlName="address2" placeholder="Address "> -->
+                                           
+                                          </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                  <mat-form-field class="col-12">
+                                                    <input matInput placeholder="Customer Landmark(optional)"  formControlName="landmark">
+                                                    <!-- <mat-error *ngIf="!dform.get('address').value && submitted">
+                                                      Driver Address <strong>required!</strong>
+                                                    </mat-error> -->
+                                                  </mat-form-field>
+                                                    <!-- <label for="exampleInputPassword1">LandMark</label> -->
+                                                    <!-- <input type="text" class="form-control" formControlName="landmark" placeholder="Landmark"> -->
+                                                   
+                                                  </div>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                          <mat-form-field class="col-12">
+                                                            <input matInput placeholder="GSTIN(optional)"  formControlName="gstin">
+                                                            <!-- <mat-error *ngIf="!dform.get('address').value && submitted">
+                                                              Driver Address <strong>required!</strong>
+                                                            </mat-error> -->
+                                                          </mat-form-field>
+                                                            <!-- <label for="exampleInputPassword1">GSTIN</label> -->
+                                                            <!-- <input type="text" formControlName="gstin" class="form-control" placeholder="GSTIN"> -->
+                                                           
+                                                          </div>
+                                                            </div>
+                                                                    
+                </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" style="margin-left: 5px;">Clear</button>
+                <a class="btn btn-primary" [routerLink]="['/customerlist']" style="margin-left: 5px;">Back</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    
+    </div></section></div> 

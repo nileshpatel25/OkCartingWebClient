@@ -1,0 +1,143 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Add Fuel Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Add new fuel info</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add new Fuel</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form [formGroup]="fform" (ngSubmit)="addfuel()">
+              <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <!-- <mat-form-field  class="col-12">
+                    <mat-label>Select Vehicle Name</mat-label>
+                    <mat-select formControlName="vehicleid" required>
+                      <mat-option *ngFor="let v of vehiclelist" [value]="v.id">
+                        {{v.vehiclename}} {{v.vehiclenumber}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!fform.get('vehicleid').value && submitted">
+                      Vehicle name  <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field> -->
+              <label for="exampleInputEmail1">Petrolpump Name</label> 
+                   <select class="form-control" formControlName="petrolpumpid">
+                    <option value="">Select PetrolPump Name</option>
+                    <option *ngFor="let v of petrolpumplist" value="{{v.id}}">{{v.name}} </option>
+                   
+                  </select>
+                  <span class="text-danger" *ngIf="!fform.get('petrolpumpid').value && submitted">PetrolPump name required!</span> 
+                </div>
+                    </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <!-- <mat-form-field  class="col-12">
+                    <mat-label>Select Vehicle Name</mat-label>
+                    <mat-select formControlName="vehicleid" required>
+                      <mat-option *ngFor="let v of vehiclelist" [value]="v.id">
+                        {{v.vehiclename}} {{v.vehiclenumber}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!fform.get('vehicleid').value && submitted">
+                      Vehicle name  <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field> -->
+              <label for="exampleInputEmail1">Vehicle Name</label> 
+                   <select class="form-control" formControlName="vehicleid">
+                    <option value="">Select Vehicle Name</option>
+                    <option *ngFor="let v of vehiclelist" value="{{v.id}}">{{v.vehiclename}} {{v.vehiclenumber}}</option>
+                   
+                  </select>
+                  <span class="text-danger" *ngIf="!fform.get('vehicleid').value && submitted">Vehicle name required!</span> 
+                </div>
+                    </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                    <!-- <mat-form-field  class="col-12">
+                        <mat-label>Select Driver Name</mat-label>
+                        <mat-select formControlName="driverid" required>
+                          <mat-option *ngFor="let v of driverlist" [value]="v.id">
+                            {{v.name}} 
+                          </mat-option>
+                        </mat-select>
+                     
+                      </mat-form-field>-->
+                      <label for="exampleInputEmail1">Driver Name</label> 
+                      <select class="form-control" formControlName="driverid">
+                       <option value="">Select Driver Name</option>
+                       <option *ngFor="let v of driverlist" value="{{v.id}}">{{v.name}}</option>
+                      
+                     </select>
+                    </div> </div> 
+                                                                    <div class="col-sm-3">
+
+                                                                    <div class="form-group">
+                                                                      <!-- <mat-form-field>
+                                                                        <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+                                                                        <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+                                                                         Amount<strong>required!</strong>
+                                                                        </mat-error>
+                                                                      </mat-form-field> -->
+                                                                        <label for="exampleInputPassword1">Amount</label>
+                                                                         <input type="text" (keypress)="keyPress($event)" class="form-control" formControlName="totalamount" placeholder="Amount">
+                                                                        <span class="text-danger" *ngIf="!fform.get('totalamount').value && submitted">Amount required!</span> 
+                                                                      </div></div>
+                                                                      <div class="col-sm-3">
+
+                                                                        <div class="form-group">
+                                                                          <!-- <mat-form-field  class="col-12"> 
+                                                                            <mat-label>Date</mat-label>
+                                                                            <input matInput formControlName="fueldate" [matDatepicker]="picker" placeholder="Date" required>
+                                                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #picker></mat-datepicker>
+                                                                            <mat-error *ngIf="!fform.get('fueldate').value && submitted">
+                                                                              date <strong>required!</strong>
+                                                                            </mat-error>
+                                                                          </mat-form-field> -->
+                                                                            <label for="exampleInputPassword1">Date</label>
+                                                                            <input type="Date" class="form-control" formControlName="fueldate">
+                                                                            <span class="text-danger" *ngIf="!fform.get('fueldate').value && submitted">  date required!</span>
+                                                                          </div>
+                                                                        </div>
+                                                                         </div>
+                                                                      </div>
+             
+
+                                                                    <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" style="margin-left: 5px;" >Clear</button>
+                <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/fuel']" >Back</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+     </div></section></div> 

@@ -1,0 +1,217 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header --> <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+          <!-- Info boxes -->
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fa fa-truck"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Vehicle</span>
+                  <span class="info-box-number">
+                   
+                   
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-signal"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Pending Amount</span>
+                  <span class="info-box-number"></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+  
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up"></div>
+  
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fa fa-signal"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Received Amount</span>
+                  <span class="info-box-number"></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Customer</span>
+                  <span class="info-box-number"></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+       
+        <div class="row">
+          <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                   <b>New Vehicle Request</b> 
+                  </h3>
+                  <div class="card-tools">
+                      <!-- <a class="btn btn-info" href="/#/jobwork">
+                          <i class="fas fa-plus"> Add New jobwork</i>
+                      </a> -->
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                  <!-- <div class="table-responsive p-0"> -->
+                  <table class="table table-hover text-nowrap">
+                      <thead>                  
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <!-- <th>Invoice No</th> -->
+                          <th>Vehicle Name</th>  
+                               <th>
+                                   Action
+                               </th>        
+                       
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let c of vehiclelist;let i=index;">
+                          <td>
+                           {{i+1}}
+                          </td>
+                          <td>
+                            {{c.vehiclename}}
+                          </td>
+                          <td>
+                            <a style="cursor: pointer;" class="badge badge-info" (click)="approve(c.id)">Approve</a>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                    <!-- </div> -->
+                </div>
+                <!-- /.card-body -->
+                <!-- <div class="card-footer clearfix">
+                  <ul class="pagination pagination-sm m-0 float-right">
+                    <li class="page-item" [ngClass]="{'disabled': pageNumber === 1}"><a class="page-link" style="cursor: pointer;" (click)="prev()">&laquo;</a></li>
+                  
+                    <li class="page-item" [ngClass]="{'disabled': pageNumber === lastPage}"><a class="page-link" style="cursor: pointer;" (click)="next()">&raquo;</a></li>
+                
+                  </ul>
+                </div> -->
+              </div>
+              <!-- /.card -->
+  
+      
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+             <b>User List</b> 
+            </h3>
+            <div class="card-tools">
+                <!-- <a class="btn btn-info" href="/#/jobwork">
+                    <i class="fas fa-plus"> Add New jobwork</i>
+                </a> -->
+              </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <!-- <div class="table-responsive p-0"> -->
+            <table class="table table-hover text-nowrap">
+                <thead>                  
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <!-- <th>Invoice No</th> -->
+                    <th>Name</th>  
+                    <th>Company Name</th>
+                         <th>
+                          PhoneNumber
+                         </th>        
+                 
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of userlist;let i=index;">
+                    <td>
+                     {{i+1}}
+                    </td>
+                    <td>
+                      {{c.name}}
+                    </td>
+                    <td>
+                      {{c.compnayname}}
+                    </td>
+                  <td>
+                    {{c.PhoneNumber}}
+                  </td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+              <!-- </div> -->
+          </div>
+          <!-- /.card-body -->
+          <!-- <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+              <li class="page-item" [ngClass]="{'disabled': pageNumber === 1}"><a class="page-link" style="cursor: pointer;" (click)="prev()">&laquo;</a></li>
+            
+              <li class="page-item" [ngClass]="{'disabled': pageNumber === lastPage}"><a class="page-link" style="cursor: pointer;" (click)="next()">&raquo;</a></li>
+          
+            </ul>
+          </div> -->
+        </div>
+      </div>
+        </div></div></section>
+  
+      
+       
+
+
+
+ </div>
+

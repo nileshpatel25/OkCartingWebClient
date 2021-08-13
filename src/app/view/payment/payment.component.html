@@ -1,0 +1,314 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Payment Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Payment</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Add New Payment details</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form [formGroup]="pform" (ngSubmit)="addpayment()">
+                  <div class="card-body">
+    
+                    <div class="row">
+                        <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control" (change)="getallcustomerjobworklist($event.target.value)" formControlName="customerid">
+                        <option value="">Select Customer Name</option>
+                        <option *ngFor="let v of driverlist" value="{{v.id}}">{{v.name}}</option>
+                       
+                      </select>
+                    <span class="text-danger" *ngIf="!pform.get('customerid').value && submitted">Driver name required!</span>
+                    <!-- <mat-form-field class="col-12">
+                      <mat-label>Select Customer Name</mat-label>
+                      <mat-select formControlName="customerid" (selectionChange)="getallcustomerjobworklist($event.value)" required>
+                        <mat-option *ngFor="let v of driverlist" [value]="v.id">
+                          {{v.name}} 
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="!pform.get('customerid').value && submitted">
+                        customer name  <strong>required!</strong>
+                      </mat-error>
+                    </mat-form-field> 
+                    -->
+                        </div>
+                       
+                        </div>
+                       
+                        <!-- <div class="col-sm-6">
+                          <div class="col-12">
+                          <div class="form-group">
+                            <mat-form-field class="col-12">
+                              <mat-select formControlName="paymenttype"  placeholder="Select Payment Type">
+      <mat-option  value="Given"> 
+      Given
+      </mat-option>
+      <mat-option  value="Received">
+        Received
+      </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!pform.get('paymenttype').value && submitted">
+      payment type <strong>required!</strong>
+      </mat-error>
+      </mat-form-field> 
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="col-sm-6" >
+                        <div class="col-12">
+                          <div class="form-group">
+                             <select class="form-control"  formControlName="paymentby" placeholder="Select Payment By">
+                              <option value="">Select Payment By</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Cheque">Cheque</option>
+                        <option value="Other">Other</option>
+                      </select>
+                            <!-- <mat-form-field class="col-12">
+                              <mat-select formControlName="paymentby"    (selectionChange)="changepaymentby($event.value)" placeholder="Select Payment By" >
+      <mat-option  value="Cash"> 
+        Cash
+      </mat-option>
+      <mat-option  value="Cheque">
+        Cheque
+      </mat-option>
+      <mat-option  value="Other">
+        Other
+      </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!pform.get('paymentby').value && submitted">
+      payment type <strong>required!</strong>
+      </mat-error>
+      </mat-form-field>  -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                       
+                          <div class="form-group">
+                            <input type="text" class="form-control" [readOnly]="readonly"  (keypress)="keyPress($event)" maxlength="10" formControlName="amount" placeholder="Amount">
+                            <span class="text-danger" style="font-size: 80%;" *ngIf="!pform.get('amount').value && submitted">amount required!</span> 
+                       
+                          <!-- <mat-form-field class="col-12">
+                            <input formControlName="amount" (keypress)="keyPress($event)" readonly [readOnly]="readonly"  matInput placeholder="Amount"    required>
+                            <mat-error *ngIf="!pform.get('amount').value && submitted">
+                             Amount <strong>required!</strong>
+                            </mat-error>
+                          </mat-form-field>  -->
+                       
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="col-12">
+
+                            <div class="form-group">
+                              <!-- <mat-form-field  class="col-12"> 
+                                <mat-label>Date of Payment</mat-label>
+                                <input matInput [matDatepicker]="picker" readonly [readOnly]="readonly"  formControlName="paymentdate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error *ngIf="!pform.get('paymentdate').value && submitted">
+                                  date <strong>required!</strong>
+                                </mat-error>
+                              </mat-form-field> -->
+                                <!-- <label for="exampleInputPassword1">Date of Payment</label> -->
+                                <input type="Date" class="form-control" [readOnly]="readonly" formControlName="paymentdate" placeholder="Date of Payment">
+                                <span class="text-danger" *ngIf="!pform.get('paymentdate').value && submitted">date of payment required!</span>
+                              </div>
+                           
+                        </div>
+                        
+                      </div>
+                      <div class="col-sm-6">
+                        <textarea class="form-control" formControlName="remark" [readOnly]="readonly" id="inputExperience" placeholder="Remark"></textarea>
+                        <!-- <mat-form-field class="col-12">
+                          <mat-label>Leave a Remark</mat-label>
+                          <textarea matInput placeholder="Remark" readonly [readOnly]="readonly"  formControlName="remark"></textarea>
+                          <mat-error *ngIf="!pform.get('remark').value && submitted">
+                            discription  <strong>required!</strong>
+                          </mat-error>
+                        </mat-form-field> -->
+                      </div>
+                       
+                      <div class="col-sm-6" *ngIf="pform.get('paymentby').value=='Cheque'">
+                        <div class="form-group">
+                        <input formControlName="chequeno" [readOnly]="readonly" class="form-control" placeholder="Cheque No">
+                        </div>
+                        <!-- <mat-form-field class="col-12">
+                          <mat-label>Leave a Remark</mat-label>
+                          <input matInput placeholder="Cheque No"  formControlName="chequeno">
+                          <mat-error *ngIf="!pform.get('remark').value && submitted">
+                            discription  <strong>required!</strong>
+                          </mat-error>
+                        </mat-form-field> -->
+                      </div>         
+                                               
+                                                       
+                                                      
+                                                               
+                                                                       
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                 
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" (click)="reset()" style="margin-left: 5px;" >Clear</button>
+                    <!-- <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/jobworkdetail']" >Back</a> -->
+                  </div>
+                 
+                </form>
+              </div>
+              <!-- /.card -->
+            </div>
+            <div class="col-md-6">
+                <div class="card card-info">
+                    <div class="card-header">
+                      <h3 class="card-title">Pending Payment Details</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <div class="card-body table-responsive p-0">
+                        <!-- <div class="table-responsive p-0"> -->
+                        <table class="table table-hover text-nowrap">
+                        <thead>                  
+                          <tr>
+                         <th>
+
+                         </th>
+                            <th>CustName</th>  
+                                           
+                            <th>Date</th>
+                           
+                           
+                            <th>TotalAmt</th>
+                            <th>ReceivedAmt</th>
+                            <th>PendingAmt</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let c of jobworklist;let i=index;">
+                            <td>
+                              <input type="checkbox"  [checked]="isChecked" value="{{c.id}}" (change)="onCheckboxChange(c.id)" data-cid="{{c.id}}" id="chkId" class="ccheck">
+                            </td>
+                            <td>
+                              {{c.customername}}
+                            </td>
+                            <td>
+                              <ng-container *ngFor="let item of c.jobworkdetails">
+                                {{item.workdate}},
+                                
+                              </ng-container>
+                            </td>
+                            <td>
+                              {{c.totalamt}}
+                            </td>
+                           <td>
+                             {{c.receivedamt}}
+                           </td>
+                           <td>
+                             {{c.totalamt - c.receivedamt}}
+                           </td>
+                          </tr>
+                           </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                   
+                  </div>
+                  <!-- /.card -->
+      
+                  </div>
+            </div>
+          </div>
+         </div></section>
+         <section class="content">
+          <div class="container-fluid">
+           
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="card card-info">
+                    <div class="card-header">
+                      
+                      <h3 class="card-title">
+                        Received Payment Details 
+                      </h3>
+                     
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                      <!-- <div class="table-responsive p-0"> -->
+                      <table class="table table-hover text-nowrap">
+                          <thead>                  
+                            <tr>
+                              <th style="width: 10px">#</th>
+                              <th>Customername</th>
+                              <th>Payment Date</th>  
+                              <!-- <th>VehiName</th>                    -->
+                              <th>PaymentBy</th>
+                              <th>Chequeno</th>
+                              <th>Amount</th>
+                              <th>Action</th>
+                              <!-- <th>Hour/Round</th>
+                              <th>PerHourRate</th>
+                              <th>TotalAmount</th> -->
+                            
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let c of custpaymentlist;let i=index;">
+                              <td>{{i+1}}</td>
+                             
+                              <td>{{c.customername}}</td>
+                             <td>
+                               {{c.paymentdate}}
+                             </td>
+                             
+                              <td>{{c.paymentby}}</td>
+                              <td>
+                             {{c.chequeno}}
+                              </td>
+                              <td>
+                               {{c.amount}}
+                              </td>
+                            <td>
+                              <button class="btn btn-default btn-sm" (click)="delete(c.id)" style="margin-left: 5px;"><i class="fa fa-trash text-danger"></i></button>
+                            </td>
+                            </tr>
+                           
+                          </tbody>
+                        </table>
+                        <!-- </div> -->
+                    </div>
+                    <!-- /.card-body -->
+                  
+                  </div>
+                  <!-- /.card -->
+      
+          
+          </div>
+            </div></div></section>
+
+</div>

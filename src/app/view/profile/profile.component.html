@@ -1,0 +1,184 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Profile</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Profile</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle"
+                     src="assets/AdminLTELogo.png"
+                     alt="User profile picture">
+              </div>
+
+              <h3 class="profile-username text-center">{{name}}</h3>
+
+              <p class="text-muted text-center">{{compnayname}}</p>
+
+              <ul class="list-group list-group-unbordered mb-3">
+               
+                <li class="list-group-item">
+                  <a class="float-left">{{PhoneNumber}}</a>
+                </li>
+                <li class="list-group-item">
+                 <a class="float-left">{{Email}}</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="float-left">{{address}}</a>
+                 </li>
+                 <li class="list-group-item">
+                    <a class="float-left">{{discription}}</a>
+                 </li>
+                 <li class="list-group-item">
+                    <a class="float-left">{{gstin}}</a>
+                 </li>
+              </ul>
+
+              <!-- <a class="btn btn-primary btn-block"><b>Edit</b></a> -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
+                <li class="nav-item"></li>
+               </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="active tab-pane" id="activity">
+                  <!-- Post -->
+                  <form [formGroup]="pform" (ngSubmit)="updateprofile()">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="inputName">Name</label>
+                     
+                        <input type="text" formControlName="name" class="form-control" id="inputName" placeholder="Name">
+                     <span class="text-danger" *ngIf="!pform.get('name').value && submitted">Name required!</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="inputEmail">CompnayName</label>
+                     
+                        <input type="text" formControlName="compnayname" class="form-control" id="inputEmail" placeholder="Company Name">
+                        <span class="text-danger" *ngIf="!pform.get('compnayname').value && submitted"> Company name Required!</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="inputEmail">GSTIN</label>
+                       
+                          <input type="text" formControlName="gstin" class="form-control" id="inputEmail" placeholder="GSTIN">
+                        </div>
+                      </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="inputName2">OtherContactno</label>
+                       
+                          <input type="text" formControlName="othercontactno" (keypress)="keyPress($event)" class="form-control" id="inputName2" placeholder="OtherContactno">
+                        </div>
+                      </div>  
+                    <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="inputName2">Address</label>
+                     
+                        <input type="text" formControlName="address" class="form-control" id="inputName2" placeholder="Address">
+                        <span class="text-danger" *ngIf="!pform.get('address').value && submitted"> Address required!</span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                          <label for="inputName2">Address2</label>
+                         
+                            <input type="text" formControlName="address2" class="form-control" id="inputName2" placeholder="Address2">
+                          </div>
+                        </div>  
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                              <label for="inputName2">Landmark</label>
+                             
+                                <input type="text" formControlName="landmark" class="form-control" id="inputName2" placeholder="Landmark">
+                              </div>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label for="inputName2">City</label>
+                                 
+                                    <input type="text" formControlName="city" class="form-control" id="inputName2" placeholder="City">
+                                  </div>
+                                </div>  
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                      <label for="inputName2">Pincode</label>
+                                     
+                                        <input type="text" formControlName="pincode" (keypress)="keyPress($event)" class="form-control" id="inputName2" placeholder="Pincode">
+                                      </div>
+                                    </div>  
+                                  
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                              <label for="inputName2">Discription</label>
+                                              <textarea class="form-control" formControlName="discription" id="inputExperience" placeholder="Discription"></textarea>
+                                                <!-- <input type="text" class="form-control" id="inputName2" placeholder="Discription"> -->
+                                              </div>
+                                            </div>  
+                                       
+                                           
+                                   
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                     
+                        <button type="submit" class="btn btn-danger" style="cursor: pointer;">Submit</button>
+                    
+                    </div>
+                  </form>
+                  <!-- /.post -->
+                </div>
+                <!-- /.tab-pane -->
+               
+
+             
+                <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>

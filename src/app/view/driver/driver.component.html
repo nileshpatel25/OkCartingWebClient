@@ -1,0 +1,283 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Add Driver Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Add new driver info</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add new Driver</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form [formGroup]="dform" (ngSubmit)="adddrive()">
+              <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <mat-form-field  class="col-12">
+                    <mat-label>Select Vehicle Name</mat-label>
+                    <mat-select formControlName="vehicleid" required>
+                      <mat-option *ngFor="let v of vehiclelist" [value]="v.id">
+                        {{v.vehiclename}} {{v.vehiclenumber}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!dform.get('vehicleid').value && submitted">
+                      Vehicle name  <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <!-- <label for="exampleInputEmail1">Vehicle Name</label> -->
+                  <!-- <select class="form-control" formControlName="vehicleid">
+                    <option value="">Select Vehicle Name</option>
+                    <option *ngFor="let v of vehiclelist" value="{{v.id}}">{{v.vehiclename}} {{v.vehiclenumber}}</option>
+                   
+                  </select>
+                  <span class="text-danger" *ngIf="!dform.get('vehicleid').value && submitted">Vehicle name required!</span> -->
+                </div>
+                    </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <mat-form-field  class="col-12">
+                    <input matInput placeholder="Driver Name"  formControlName="name">
+                    <mat-error *ngIf="!dform.get('name').value && submitted">
+                      Driver Name <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <!-- <label for="exampleInputPassword1">Driver Name</label> -->
+                  <!-- <input type="text" class="form-control" formControlName="name" placeholder="Driver name">
+               
+                <span class="text-danger" *ngIf="!dform.get('name').value && submitted">Driver name required!</span> -->
+              </div> </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <mat-form-field  class="col-12">
+                    <input matInput placeholder="Mobile No"  (keypress)="keyPress($event)" maxlength="10" formControlName="mobileno" required>
+                    <mat-error *ngIf="!dform.get('mobileno').value && submitted">
+                      Driver mobileno <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field>
+                    <!-- <label for="exampleInputPassword1">Mobile No</label> -->
+                    <!-- <input type="text" class="form-control" (keypress)="keyPress($event)" maxlength="10" formControlName="mobileno" placeholder="Mobile No">
+                    <span class="text-danger" *ngIf="!dform.get('mobileno').value && submitted">Driver mobile no required!</span> -->
+                  </div>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                          <mat-form-field  class="col-12">
+                            <input matInput placeholder="Other mobile no(optional) "  (keypress)="keyPress($event)" maxlength="10" formControlName="othermobileno">
+                          
+                          </mat-form-field>
+                            <!-- <label for="exampleInputPassword1">Other Mobile No</label> -->
+                            <!-- <input type="text" class="form-control" (keypress)="keyPress($event)" maxlength="10" formControlName="othermobileno" placeholder="Other mobile no"> -->
+                           
+                          </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                  <mat-form-field  class="col-12">
+                                    <input matInput placeholder="Driver Address"  formControlName="address" required>
+                                    <mat-error *ngIf="!dform.get('address').value && submitted">
+                                      Driver Address <strong>required!</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                    <!-- <label for="exampleInputPassword1">Address</label> -->
+                                    <!-- <input type="text" class="form-control" formControlName="address" placeholder="address">
+                                    <span class="text-danger" *ngIf="!dform.get('address').value && submitted">Driver address required!</span> -->
+                                  </div>
+                                    </div>
+                                    <!-- <div class="col-sm-3">
+                                        <div class="form-group">
+                                          <mat-form-field  class="col-12">
+                                            <input matInput placeholder="Driver Address2(optional)"  formControlName="address2">
+                                          
+                                          </mat-form-field>
+                                          
+                                          </div>
+                                            </div> -->
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                  <mat-form-field  class="col-12">
+                                                    <input matInput placeholder="Driver Landmark(optional)"  formControlName="landmark">
+                                                    <!-- <mat-error *ngIf="!dform.get('address').value && submitted">
+                                                      Driver Address <strong>required!</strong>
+                                                    </mat-error> -->
+                                                  </mat-form-field>
+                                                    <!-- <label for="exampleInputPassword1">LandMark</label> -->
+                                                    <!-- <input type="text" class="form-control" formControlName="landmark" placeholder="Landmark"> -->
+                                                   
+                                                  </div>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                          <mat-form-field  class="col-12">
+                                                           
+                                                            <input matInput placeholder="Adharcard No"  (keypress)="keyPress($event)" maxlength="12" formControlName="adharcardno" required>
+                                                            <mat-error *ngIf="!dform.get('adharcardno').value && submitted">
+                                                              Driver adharcard no <strong>required!</strong>
+                                                            </mat-error>
+                                                          </mat-form-field>
+                                                            <!-- <label for="exampleInputPassword1">Adharcard No</label> -->
+                                                            <!-- <input type="text" (keypress)="keyPress($event)" class="form-control" maxlength="12" formControlName="adharcardno" placeholder="Adharcard no">
+                                                            <span class="text-danger" *ngIf="!dform.get('adharcardno').value && submitted">Driver adharcard no required!</span> -->
+                                                          </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group">
+                                                                  <mat-form-field class="col-12">
+                                                                    <input matInput placeholder="DrivingLicense No"   maxlength="15" formControlName="licenseno" required>
+                                                                    <mat-error *ngIf="!dform.get('licenseno').value && submitted">
+                                                                      DrivingLicense no <strong>required!</strong>
+                                                                    </mat-error>
+                                                                  </mat-form-field>
+                                                                    <!-- <label for="exampleInputPassword1">License No</label> -->
+                                                                    <!-- <input type="text" class="form-control" formControlName="licenseno" placeholder="License no">
+                                                                    <span class="text-danger" *ngIf="!dform.get('licenseno').value && submitted">Driver licenseno required!</span> -->
+                                                                  </div>
+                                                                    </div>
+
+
+                                                                    <div class="col-sm-3">
+
+                                                                      <div class="form-group">
+                                                                        <mat-form-field  class="col-12"> 
+                                                                          <mat-label>License Valid up to</mat-label>
+                                                                          <input matInput formControlName="licensevalidupto" [matDatepicker]="picker1" placeholder="License Valid up to" required>
+                                                                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                                                          <mat-datepicker #picker1></mat-datepicker>
+                                                                          <mat-error *ngIf="!dform.get('licensevalidupto').value && submitted">
+                                                                            License Valid up to  date <strong>required!</strong>
+                                                                          </mat-error>
+                                                                        </mat-form-field>
+                                                                          <!-- <label for="exampleInputPassword1">Date of Joining</label>
+                                                                          <input type="Date" class="form-control" formControlName="dateofjoining" placeholder="Date of joining">
+                                                                          <span class="text-danger" *ngIf="!dform.get('dateofjoining').value && submitted">Driver joining date required!</span> -->
+                                                                        </div>
+                                                                      </div>
+
+
+                                                                      <div class="col-sm-3">
+
+                                                                        <div class="form-group">
+                                                                          <mat-form-field  class="col-12">
+                                                                            <mat-label>Select Hire On</mat-label>
+                                                                            <mat-select formControlName="hireon"  required>
+                                                                              <mat-option value="Hourly">
+                                                                               Hourly
+                                                                              </mat-option>
+                                                                              <mat-option value="Day Wages">
+                                                                                Day Wages
+                                                                               </mat-option>
+                                                                               <mat-option value="Month Wise">
+                                                                                Month Wise
+                                                                               </mat-option>
+                                                                            </mat-select>
+                                                                            <mat-error *ngIf="!dform.get('hireon').value && submitted">
+                                                                              Hire On  <strong>required!</strong>
+                                                                            </mat-error>
+                                                                          </mat-form-field>
+                                                                      </div>
+                                                                      </div>
+
+
+
+                                                                    <div class="col-sm-3">
+
+                                                                    <div class="form-group">
+                                                                      <mat-form-field>
+                                                                        <input matInput placeholder="Salary based on Hire On"  (keypress)="keyPress($event)" maxlength="12" formControlName="perdaysalary" required>
+                                                                        <mat-error *ngIf="!dform.get('perdaysalary').value && submitted">
+                                                                          Driver par day salary<strong>required!</strong>
+                                                                        </mat-error>
+                                                                      </mat-form-field>
+                                                                        <!-- <label for="exampleInputPassword1">Per Day Salary</label> -->
+                                                                        <!-- <input type="text" (keypress)="keyPress($event)" class="form-control" formControlName="perdaysalary" placeholder="Per day salary">
+                                                                        <span class="text-danger" *ngIf="!dform.get('perdaysalary').value && submitted">Driver par day salary required!</span> -->
+                                                                      </div></div>
+                                                                      <div class="col-sm-3">
+
+                                                                        <div class="form-group">
+                                                                          <mat-form-field  class="col-12"> 
+                                                                            <mat-label>Date of Joining</mat-label>
+                                                                            <input matInput formControlName="dateofjoining" [matDatepicker]="picker" placeholder="Date of Joining" required>
+                                                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #picker></mat-datepicker>
+                                                                            <mat-error *ngIf="!dform.get('dateofjoining').value && submitted">
+                                                                            Joining  date <strong>required!</strong>
+                                                                            </mat-error>
+                                                                          </mat-form-field>
+                                                                            <!-- <label for="exampleInputPassword1">Date of Joining</label>
+                                                                            <input type="Date" class="form-control" formControlName="dateofjoining" placeholder="Date of joining">
+                                                                            <span class="text-danger" *ngIf="!dform.get('dateofjoining').value && submitted">Driver joining date required!</span> -->
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                          <div class="form-group">
+                                                         
+                                                                          
+                                                          <label>Upload License</label>
+                                          
+                                                            <input type="file" (change)="filelicenseprogress($event)"  accept="image/*" class="form-control">
+                                                          
+                                                         
+                                                        </div>
+                                          </div>
+                                          <div class="col-md-3">
+                                            <div class="form-group">
+                           
+                                            
+                            <label>Upload Adharcard</label>
+            
+                              <input type="file" (change)="fileadharcardprogress($event)"  accept="image/*" class="form-control">
+                            
+                           
+                          </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+
+              
+<label>Upload Driver Photo</label>
+
+<input type="file" (change)="fileProgress($event)"  accept="image/*" class="form-control">
+
+
+</div>
+</div>
+                                                                         </div>
+                                                                      </div>
+             
+
+                                                                    <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" style="margin-left: 5px;" >Clear</button>
+                <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/driverlist']" >Back</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+     </div></section></div> 

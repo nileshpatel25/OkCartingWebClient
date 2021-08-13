@@ -1,0 +1,249 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Add Job Work Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">add job work details</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Add new Job work details</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form [formGroup]="dform" (ngSubmit)="addjobworkdetails()">
+                  <div class="card-body">
+    
+                    <div class="row">
+                        <div class="col-sm-4">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-10">
+                      <!-- <select class="form-control" formControlName="customerid">
+                        <option value="null">Select Driver Name</option>
+                        <option *ngFor="let v of driverlist" value="{{v.id}}">{{v.name}}</option>
+                       
+                      </select>
+                    <span class="text-danger" *ngIf="!dform.get('customerid').value && submitted">Driver name required!</span> -->
+                    <mat-form-field class="col-10">
+                      <mat-label>Select Customer Name</mat-label>
+                      <mat-select formControlName="customerid">
+                        <mat-option *ngFor="let v of driverlist" [value]="v.id">
+                          {{v.name}} 
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="!dform.get('customerid').value && submitted">
+                        customer name  <strong>required!</strong>
+                      </mat-error>
+                    </mat-form-field> 
+                    <a style="cursor: pointer;padding: 0px;" [routerLink]="['/addcustomer']" title="Add New Customer">
+                      <i class="fa fa-fw fa-user-plus"></i>
+                    </a>
+                        </div>
+
+                    
+
+                      </div>
+
+
+                    
+                        </div>
+                       
+                        </div>
+                       
+                        <div class="col-sm-4">
+                    <div class="form-group">
+                      <!-- <select class="form-control" formControlName="paymenttype">
+                        <option value="Credit">Credit</option>
+                        <option value="Cash">Cash</option>
+                      </select> -->
+                      <mat-form-field class="col-12">
+                        <mat-select formControlName="paymenttype" placeholder="Select Payment Type">
+<mat-option  value="Credit"> 
+Credit
+</mat-option>
+<mat-option  value="Cash">
+Cash
+</mat-option>
+</mat-select>
+<mat-error *ngIf="!dform.get('paymenttype').value && submitted">
+payment type <strong>required!</strong>
+</mat-error>
+</mat-form-field> 
+                      </div> </div>
+                      
+                       
+                                      
+                                               
+                                                       
+                                                      
+                                                               
+                                                                       
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-body" formArrayName="jobworkdetails">
+                    <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                      <thead>                  
+                        <tr>
+                          <th style="width: 10px">#</th>
+                         
+                          <th>Vehicle Name</th>  
+                          <th>Driver Name</th>                 
+                          <th style="width: 10%">Date</th>                        
+                          <th>Hour/Round</th>
+                          <th>PerHourRate</th>
+                          <th>TotalAmount</th>
+                          <th>Discription</th>  
+                                                  <th style="width: 10%"> Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let jobworkdetail of formData.controls; let i=index" [formGroupName]="i"> 
+                          <td>{{i+1}}</td>
+                        
+                          <td>
+                             <select class="form-control" formControlName="vehicleid" (change)="onvehiclechange($event.target.value,i)">
+                        <option value="">Select Vehicle Name</option>
+                        <option *ngFor="let v of vehiclelist" value="{{v.id}}">{{v.vehiclename}} {{v.vehiclenumber}}</option>
+                       
+                      </select>
+                      <span class="text-danger" style="font-size: 80%;" *ngIf="!formData.controls[i].get('vehicleid').value && submitted">vehicle name required!</span>
+                     
+                            <!-- <mat-form-field class="col-12">
+                              <mat-label>Select Vehicle Name</mat-label>
+                              <mat-select formControlName="vehicleid"  (selectionChange)="onvehiclechange($event)">
+                                <mat-option *ngFor="let v of vehiclelist" value="v.id">
+                                  {{v.vehiclename}} {{v.vehiclenumber}}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="!dform.get('vehicleid').value && submitted">
+                                Vehicle name  <strong>required!</strong>
+                              </mat-error>
+                            </mat-form-field> -->
+                          </td>
+                          <td>
+                            <select class="form-control" formControlName="driverid">
+                              <option value="">Select Driver Name</option>
+                              <option *ngFor="let v of driverlist" value="{{v.id}}">{{v.name}}</option>
+                             
+                            </select>
+                            </td>
+
+                          <td>
+                            <input type="Date" class="form-control" formControlName="workdate" placeholder="Date">
+                            <span class="text-danger" style="font-size: 80%;" *ngIf="!formData.controls[i].get('workdate').value && submitted">date required!</span>
+                     
+                            <!-- <mat-form-field class="col-12"> 
+                              <mat-label>Date of work</mat-label>
+                              <input matInput formControlName="workdate" [matDatepicker]="picker" placeholder="Date of work">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                              <mat-error *ngIf="!dform.get('workdate').value && submitted">
+                                date <strong>required!</strong>
+                              </mat-error>
+                            </mat-form-field> -->
+                          </td>
+                        
+                          <td>
+                             <input type="text" class="form-control" (keyup)="onKeyUpEvent($event,i)" (keypress)="keyPress($event)" maxlength="10" formControlName="hour" placeholder="Hour / Round">
+                        <span class="text-danger" style="font-size: 80%;" *ngIf="!formData.controls[i].get('hour').value && submitted">Hour/round required!</span> 
+                       
+                            <!-- <mat-form-field class="col-12">
+                              <input matInput placeholder="Hour / Round"  (keyup)="onKeyUpEvent($event)" (keypress)="keyPress($event)" formControlName="hour">
+                              <mat-error *ngIf="!dform.get('hour').value && submitted">
+                                Hour / round  <strong>required!</strong>
+                              </mat-error>
+                            </mat-form-field> -->
+                          </td>
+                          <td> 
+                            <input type="text" class="form-control" (keyup)="onKeyUpEventamt($event,i)" (keypress)="keyPress($event)" maxlength="10" formControlName="perhourrate" placeholder="Per Hour rate / round rate">
+                            <span class="text-danger" style="font-size: 80%;" *ngIf="!formData.controls[i].get('perhourrate').value && submitted">PerHourRate required!</span> 
+                       
+                            <!-- <mat-form-field class="col-12">
+                              <input matInput placeholder="Per Hour rate / round rate"  (keyup)="onKeyUpEventamt($event)" (keypress)="keyPress($event)" formControlName="perhourrate">
+                              <mat-error *ngIf="!dform.get('perhourrate').value && submitted">
+                                per hour rate  <strong>required!</strong>
+                              </mat-error>
+                            </mat-form-field> -->
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" readonly formControlName="totalamount" placeholder="Total Amount">
+                            <!-- <mat-form-field class="col-12">
+                              <input matInput placeholder="Total Amount" readonly (keypress)="keyPress($event)" formControlName="totalamount">
+                           
+                              <mat-error *ngIf="!dform.get('totalamount').value && submitted">
+                                total  <strong>required!</strong>
+                              </mat-error>
+                              <span class="text-danger" *ngIf="!dform.get('totalamount').value && submitted">total required!</span>
+                            </mat-form-field> -->
+                          </td>
+                          <td>
+                              <textarea class="form-control" formControlName="discrition" id="inputExperience" placeholder="Discription"></textarea> 
+                              <span class="text-danger" style="font-size: 80%;" *ngIf="!formData.controls[i].get('discrition').value && submitted">Discription required!</span> 
+                       
+                              <!-- <mat-form-field class="col-12">
+                              <mat-label>Leave a comment</mat-label>
+                              <textarea matInput placeholder="Discription" formControlName="discrition"></textarea>
+                              <mat-error *ngIf="!dform.get('discrition').value && submitted">
+                                discription  <strong>required!</strong>
+                              </mat-error>
+                            </mat-form-field> -->
+                          </td>
+                          <td style="width: 50px">
+                            <button type="button" (click)="addnewrow()" class="btn btn-primary btn-sm" tooltip="add new row"><i class="nav-icon far fa-plus-square"></i></button>
+                            <button (click)="deleterow(i)" class="btn btn-default btn-sm" style="margin-left: 5px;"><i class="fa fa-trash text-danger"></i></button>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                    </div>
+                    <!-- <div *ngFor="let jobworkdetail of dform.controls.jobworkdetails.controls; let i=index">
+                      <div [formGroupName]="i">
+                      
+                        <input type="text">
+                      
+                 
+                       
+                      </div>
+                    </div> -->
+                 
+                </div>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary" style="margin-left: 5px;" >Clear</button>
+                    <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/jobworkdetail']" >Back</a>
+                  </div>
+                 
+                </form>
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+         </div></section>
+
+
+        
+
+
+      </div>
+
