@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   public loginform:FormGroup;
   formSubmitted: boolean =false;
+  test: string='Hello   ';
   constructor(
     private apiservice:ApiService,
     private toast:ToastrService,
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  
+  console.log(this.test.charAt(0));
   this.loginform = new FormGroup({
 username:new FormControl('',Validators.required),
 password:new FormControl('',Validators.required)

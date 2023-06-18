@@ -19,17 +19,32 @@ export class AppService {
     localStorage.setItem('username',resp.userName);
     localStorage.setItem('role',resp.Role);
     localStorage.setItem('Name',resp.Name);
+  //  localStorage.setItem('key','loaded');
     if(resp.Role=="Admin")
     {
       this.router.navigate(['/admindashboard']);
     }else
     {
       this.router.navigate(['/dashboard']);
+     
+      //this.router.navigateByUrl('/dashboard',{ skipLocationChange: true });
+    
+     
     }
    
 
   }
-
+signup(resp){
+  console.log(resp);
+  localStorage.setItem('token',resp.access_token);
+  localStorage.setItem('id',resp.id);
+  localStorage.setItem('expires_in',resp.expires_in);
+  localStorage.setItem('username',resp.userName);
+  localStorage.setItem('role',resp.Role);
+  localStorage.setItem('Name',resp.Name);
+  this.router.navigate(['/profile']);
+     
+}
 checktoken(){
   if(!localStorage.id){
     this.toast.info('','token expired');

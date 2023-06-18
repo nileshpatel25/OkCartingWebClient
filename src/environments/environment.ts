@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
- base_url:'http://api.okcarting.com/'
+//  base_url:'https://localhost:44361/'
+base_url:'http://api.okcarting.com/'
 };
 
 /*

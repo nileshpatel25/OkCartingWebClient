@@ -48,6 +48,26 @@ import { AddadvancesalaryComponent } from './view/addadvancesalary/addadvancesal
 import { VehiclemasterComponent } from './view/vehiclemaster/vehiclemaster.component';
 import { AddpetrolpumpComponent } from './view/addpetrolpump/addpetrolpump.component';
 import { PetrolpumplistComponent } from './view/petrolpumplist/petrolpumplist.component';
+import { ExpensetypeComponent } from './view/expensetype/expensetype.component';
+import { ExpensedetailsComponent } from './view/expensedetails/expensedetails.component';
+import { VendorpaymentComponent } from './view/vendorpayment/vendorpayment.component';
+import { DrivesalaryComponent } from './view/drivesalary/drivesalary.component';
+import { DriversalarylistComponent } from './view/driversalarylist/driversalarylist.component';
+import { MainComponent } from './pages/main/main.component';
+import { FooterComponent } from './pages/main/footer/footer.component';
+import { HeaderComponent } from './pages/main/header/header.component';
+import { MenuSidebarComponent } from './pages/main/menu-sidebar/menu-sidebar.component';
+import { MessagesDropdownMenuComponent } from './pages/main/header/messages-dropdown-menu/messages-dropdown-menu.component';
+import { NotificationsDropdownMenuComponent } from './pages/main/header/notifications-dropdown-menu/notifications-dropdown-menu.component';
+import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
+import { UserdashboardComponent } from './view/userdashboard/userdashboard.component';
+import { HiringreportComponent } from './view/hiringreport/hiringreport.component';
+import { VehiclereportComponent } from './view/vehiclereport/vehiclereport.component';
+import { FuelreportComponent } from './view/fuelreport/fuelreport.component';
+import { ExpensereportComponent } from './view/expensereport/expensereport.component';
+import { JobworkreportComponent } from './view/jobworkreport/jobworkreport.component';
+
+import { SignupComponent } from './pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +98,26 @@ import { PetrolpumplistComponent } from './view/petrolpumplist/petrolpumplist.co
     VehiclemasterComponent,
     AddpetrolpumpComponent,
     PetrolpumplistComponent,
+    ExpensetypeComponent,
+    ExpensedetailsComponent,
+    VendorpaymentComponent,
+    DrivesalaryComponent,
+    DriversalarylistComponent,
+    MainComponent,
+    FooterComponent,
+    HeaderComponent,
+    MenuSidebarComponent,
+    MessagesDropdownMenuComponent,
+    NotificationsDropdownMenuComponent,
+    UserDropdownMenuComponent,
+    UserdashboardComponent,
+    HiringreportComponent,
+    VehiclereportComponent,
+    FuelreportComponent,
+    ExpensereportComponent,
+    JobworkreportComponent,
+   
+    SignupComponent,
     
   ],
   imports: [
@@ -98,9 +138,11 @@ import { PetrolpumplistComponent } from './view/petrolpumplist/petrolpumplist.co
     UiSwitchModule,
     TextMaskModule,
     ToastrModule.forRoot({
-      timeOut:10000,
-      positionClass:'toast-top-right',
-      preventDuplicates:true,
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar:true,
+      progressAnimation:'increasing'
     })
     
   ],

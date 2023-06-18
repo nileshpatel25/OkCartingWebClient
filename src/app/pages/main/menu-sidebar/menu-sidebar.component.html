@@ -1,0 +1,305 @@
+<aside #mainSidebar class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a [routerLink]="['/dashboard']" class="brand-link">
+      <img src="assets/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <!-- <span class="brand-text font-weight-light">{{compnayname}}</span> -->
+    </a>
+  
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <!-- <img src="assets/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image"> -->
+        </div>
+        <div class="info">
+          <a [routerLink]="['/dashboard']" class="d-block">{{name}}</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open" *ngIf="!isAdmin">
+            <a  [routerLink]="['/dashboard']" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+           
+          </li>
+          <li class="nav-item has-treeview menu-open" *ngIf="isAdmin">
+            <a  [routerLink]="['/admindashboard']" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+           
+          </li>
+          <li class="nav-item has-treeview">
+            <a class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+               Vehicle
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+            
+
+              <li class="nav-item" *ngIf="isAdmin">
+                <a [routerLink]="['/vehiclemaster']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                   <p>Vehicle</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/vehicle']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                   <p>Add Vehicle</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/driverlist']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Driver Details</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/driver']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Driver</p>
+                </a>
+              </li>
+            </ul>
+          </li> 
+          <li class="nav-item has-treeview">
+            <a  class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+               JOb Work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/jobworkdetail']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Job work Details</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/jobwork']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                   <p>Add New Job Work</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a  class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+               Customer
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/customerlist']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Customer Details</p>
+                </a>
+              </li>
+             
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/addcustomer']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                   <p>Add New Customer</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+         
+          <li class="nav-item has-treeview">
+            <a  class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+              Payment
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/payment']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New Customer Payment</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/vendorpayment']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New Vendor Payment</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a  class="nav-link" style="cursor: pointer;"> 
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Fuel
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/petrolpumplist']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Petrol Pump List</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/addpetrolpump']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Petrol Pump</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/fuel']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Fuel Details</p>
+                </a>
+              </li>
+              
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/addfuel']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Fuel Details</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Expense
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/expensetype']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Expense Type</p>
+                </a>
+              </li>
+            
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/expensedetails']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Expense Details</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Report
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/hiringreport']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Hiring Report</p>
+                </a>
+              </li>
+            
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/vehiclereport']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Vehicle Report</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/fuelreport']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Fule Report</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/expensereport']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Expense Report</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/jobworkreport']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>JobWork Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+
+          <li class="nav-item has-treeview">
+            <a class="nav-link" style="cursor: pointer;">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+              Payroll
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/driverattendance']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Driver Attendance</p>
+                </a>
+              </li>
+            
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/advancelsarylist']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Advance Salary</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="!isAdmin">
+                <a [routerLink]="['/driversalarylist']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Driver Salary</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+        
+        </ul>
+                 </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  

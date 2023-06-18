@@ -15,6 +15,7 @@ export class JobworkComponent implements OnInit {
   dform:FormGroup;
   vehiclelist:any=[];
   driverlist:any=[];
+  customerlist:any=[];
   id:any;
 totalrow:number;
   constructor(   private apiservice:ApiService,
@@ -93,7 +94,8 @@ this.totalrow=control.value.length;
       controls.controls[i].get('perhourrate').setValue(jobwork[0].jobworkdetails[i].perhourrate);
       controls.controls[i].get('totalamount').setValue(jobwork[0].jobworkdetails[i].totalamount);
       controls.controls[i].get('discrition').setValue(jobwork[0].jobworkdetails[i].discrition);
-      controls.controls[i].get('workdate').setValue( this.formatDate(jobwork[0].jobworkdetails[i].workdate));
+      controls.controls[i].get('driverid').setValue(jobwork[0].jobworkdetails[i].driverid);
+      controls.controls[i].get('workdate').setValue( this.formatDate(jobwork[0].jobworkdetails[i].dateofwork));
         // vehicleid:controls[i].vehicleid.setValue,   
         // hour:controls[i].hour, 
         // perhourrate:controls[i].perhourrate, 
@@ -125,8 +127,13 @@ itemarray(){
 
   getdriverlist(){
 this.apiservice.postapi('api/customer/allcustomerslistbyuser?userid='+localStorage.id).subscribe(resp=>{
+  this.customerlist=resp.lstItems;
+})
+
+this.apiservice.postapi('api/driver/alldriverlistbyuser?userid='+localStorage.id).subscribe(resp=>{
   this.driverlist=resp.lstItems;
 })
+
   }
   addjobworkdetails(){
     this.submitted=true;

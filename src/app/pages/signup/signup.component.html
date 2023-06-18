@@ -1,0 +1,112 @@
+
+<div class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+          <a href="#"><b>OK</b>CARTING</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+          <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign up to start your session</p>
+      
+            <form [formGroup]="loginform" (ngSubmit)="login()">
+              <div class="input-group mb-3">
+                <input type="text" formControlName="name" class="form-control" placeholder="Name">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <p>
+                <span class="text-danger" *ngIf="!loginform.get('name').value && formSubmitted">
+                  Enter your name
+                </span>
+              </p>
+              <div class="input-group mb-3">
+                <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <p>
+                <span class="text-danger" *ngIf="!loginform.get('email').value && formSubmitted">
+                  Enter your email
+                </span>
+              </p>
+              <div class="input-group mb-3">
+                <input type="text" formControlName="phonenumber" maxlength="10" class="form-control" placeholder="Phone Numeber">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <p>
+                <span class="text-danger" *ngIf="!loginform.get('phonenumber').value && formSubmitted">
+                  Enter your Phone Numebr
+                </span>
+              </p>
+              <div class="input-group mb-3">
+                <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <p>
+                <span class="text-danger" *ngIf="!loginform.get('password').value && formSubmitted">
+                  Enter your password
+                </span>
+              </p>
+              <div class="row">
+                <div class="col-8">
+                  <!-- <div class="icheck-primary">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">
+                      Remember Me
+                    </label>
+                  </div> -->
+                </div>
+                <!-- /.col -->
+                <div class="col-4">
+                  <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                </div>
+                <!-- /.col -->
+              </div>
+            </form>
+      
+            <!-- <div class="social-auth-links text-center mb-3">
+              <p>- OR -</p>
+              <a href="#" class="btn btn-block btn-primary">
+                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+              </a>
+              <a href="#" class="btn btn-block btn-danger">
+                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+              </a>
+            </div> -->
+            <!-- /.social-auth-links -->
+      
+            <!-- <p class="mb-1">
+              <a [routerLink]="['/forgetpassword']">I forgot my password</a>
+            </p> -->
+            <p class="mb-0">
+              <a [routerLink]="['/']" class="text-center">Login</a>
+            </p>
+          </div>
+          <!-- /.login-card-body -->
+        </div>
+      </div>
+      <!-- /.login-box -->
+    </div>
+    <ngx-spinner
+      bdColor="rgba(51,51,51,0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-scale-multiple"
+    >
+      <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>

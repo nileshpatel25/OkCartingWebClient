@@ -12,6 +12,7 @@ export class LayoutComponent implements OnInit {
   name:any;
   role:any;
   compnayname:any;
+  currantYear: number = new Date().getFullYear();
   constructor(private appservice:AppService,private apiservice: ApiService) { }
   
   get isAdmin() {

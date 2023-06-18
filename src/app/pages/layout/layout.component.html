@@ -187,7 +187,7 @@
             <!-- <img src="assets/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image"> -->
           </div>
           <div class="info">
-            <a href="#" class="d-block">{{name}}</a>
+            <a [routerLink]="['/dashboard']" class="d-block">{{name}}</a>
           </div>
         </div>
   
@@ -217,7 +217,7 @@
              
             </li>
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a class="nav-link" style="cursor: pointer;">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                  Vehicle
@@ -225,6 +225,9 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
+
+              
+
                 <li class="nav-item" *ngIf="isAdmin">
                   <a [routerLink]="['/vehiclemaster']" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -250,9 +253,9 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> 
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a  class="nav-link" style="cursor: pointer;">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                  JOb Work
@@ -277,7 +280,7 @@
             </li>
 
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a  class="nav-link" style="cursor: pointer;">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                  Customer
@@ -303,7 +306,7 @@
             </li>
            
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a  class="nav-link" style="cursor: pointer;">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                 Payment
@@ -314,16 +317,21 @@
                 <li class="nav-item" *ngIf="!isAdmin">
                   <a [routerLink]="['/payment']" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add New Payment</p>
+                    <p>Add New Customer Payment</p>
                   </a>
                 </li>
-                
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/vendorpayment']" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add New Vendor Payment</p>
+                  </a>
+                </li>
                
               </ul>
             </li>
 
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a  class="nav-link" style="cursor: pointer;"> 
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                 Fuel
@@ -360,7 +368,32 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a class="nav-link" style="cursor: pointer;">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                Expense
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/expensetype']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Expense Type</p>
+                  </a>
+                </li>
+              
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/expensedetails']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Expense Details</p>
+                  </a>
+                </li>
+               
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a class="nav-link" style="cursor: pointer;">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                 Payroll
@@ -381,10 +414,58 @@
                   <p>Advance Salary</p>
                   </a>
                 </li>
-               
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/driversalarylist']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Driver Salary</p>
+                  </a>
+                </li>
+                
               </ul>
             </li>
-           
+            <li class="nav-item has-treeview">
+              <a class="nav-link" style="cursor: pointer;">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                Report
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/hiringreport']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Hiring Report</p>
+                  </a>
+                </li>
+              
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/vehiclereport']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vehicle Report</p>
+                  </a>
+                </li>
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/fuelreport']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fule Report</p>
+                  </a>
+                </li>
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/expensereport']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Expense Report</p>
+                  </a>
+                </li>
+                <li class="nav-item" *ngIf="!isAdmin">
+                  <a [routerLink]="['/jobworkreport']" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>JobWork Report</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
             
           </ul>
                    </nav>
@@ -397,7 +478,7 @@
 
      <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="#">Ok Carting</a>.</strong>
+    <strong>Copyright &copy; {{currantYear}} <a [routerLink]="['/dashboard']">Ok Carting</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0

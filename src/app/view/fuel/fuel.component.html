@@ -96,6 +96,42 @@
                       
                      </select>
                     </div> </div> 
+
+<div class="col-sm-3"> 
+  <label for="exampleInputPassword1">Payment Type</label>
+  <select class="form-control"  formControlName="paymenttype" placeholder="Select Payment By">
+    <option value="">Select Payment Type</option>
+<option value="Cash">Cash</option>
+<option value="Credit">Credit</option>
+
+</select>
+</div>
+<div class="col-sm-3">
+
+  <div class="form-group">
+    <!-- <mat-form-field>
+      <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+      <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+       Amount<strong>required!</strong>
+      </mat-error>
+    </mat-form-field> -->
+      <label for="exampleInputPassword1">Rate</label>
+       <input type="text" (keypress)="keyPress($event)"  class="form-control" formControlName="rate" placeholder="Rate">
+      <span class="text-danger" *ngIf="!fform.get('rate').value && submitted">Rate required!</span> 
+    </div></div>
+    <div class="col-sm-3">
+
+      <div class="form-group">
+        <!-- <mat-form-field>
+          <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+          <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+           Amount<strong>required!</strong>
+          </mat-error>
+        </mat-form-field> -->
+          <label for="exampleInputPassword1">Liter</label>
+           <input type="text" (keypress)="keyPress($event)" (keyup)="onKeyUpEvent($event)"  class="form-control" formControlName="liter" placeholder="Liter">
+          <span class="text-danger" *ngIf="!fform.get('liter').value && submitted">Liter required!</span> 
+        </div></div>
                                                                     <div class="col-sm-3">
 
                                                                     <div class="form-group">
@@ -126,6 +162,17 @@
                                                                             <span class="text-danger" *ngIf="!fform.get('fueldate').value && submitted">  date required!</span>
                                                                           </div>
                                                                         </div>
+                                                                        <div class="col-md-3">
+                                                                          <div class="form-group">
+                                                         
+                                                                          
+                                                          <label>Upload Receipt</label>
+                                          
+                                                            <input type="file" (change)="filereceiptprogress($event)"  accept="image/*" class="form-control">
+                                                          
+                                                         
+                                                        </div>
+                                          </div>
                                                                          </div>
                                                                       </div>
              

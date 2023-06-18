@@ -36,7 +36,8 @@ id:any;
 
       advancesalarymonth:['',Validators.required],
       advancesalaryyear:['',Validators.required],
-      advancesalarydate:['',Validators.required]
+      advancesalarydate:['',Validators.required],
+      remark:['']
       
           });
           this.id=this.route.snapshot.queryParamMap.get('id');
@@ -60,6 +61,7 @@ id:any;
        advancesalaryamt:driverinfo[0].advancesalaryamt,
        advancesalaryyear:driverinfo[0].advancesalaryyear,
        advancesalarymonth:driverinfo[0].advancesalarymonth,
+       remark:driverinfo[0].remark,
        advancesalarydate: this.formatDate(driverinfo[0].advancesalarydate),
       });
     });

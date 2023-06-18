@@ -1,0 +1,227 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Add Driver Salary Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Add driver salary info</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add Driver Salary</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form [formGroup]="fform" (ngSubmit)="onsubmit()">
+              <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <!-- <mat-form-field  class="col-12">
+                    <mat-label>Select Vehicle Name</mat-label>
+                    <mat-select formControlName="vehicleid" required>
+                      <mat-option *ngFor="let v of vehiclelist" [value]="v.id">
+                        {{v.vehiclename}} {{v.vehiclenumber}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!fform.get('vehicleid').value && submitted">
+                      Vehicle name  <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field> -->
+                  <label for="exampleInputEmail1">Driver Name</label> 
+                  <select class="form-control" (change)="getsalary()" formControlName="driverid">
+                   <option value="">Select Driver Name</option>
+                   <option *ngFor="let v of driverlist" value="{{v.id}}">{{v.name}}</option>
+                  
+                 </select>
+                  <span class="text-danger" *ngIf="!fform.get('driverid').value && submitted">Driver name required!</span> 
+                </div>
+                    </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                  <!-- <mat-form-field  class="col-12">
+                    <mat-label>Select Vehicle Name</mat-label>
+                    <mat-select formControlName="vehicleid" required>
+                      <mat-option *ngFor="let v of vehiclelist" [value]="v.id">
+                        {{v.vehiclename}} {{v.vehiclenumber}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!fform.get('vehicleid').value && submitted">
+                      Vehicle name  <strong>required!</strong>
+                    </mat-error>
+                  </mat-form-field> -->
+                  <label for="exampleInputPassword1">Year</label>
+                  <select class="form-control" (change)="getsalary()" formControlName="yearofsalary">
+                    <option value="null" selected>Select Year</option>
+                    <option *ngFor="let v of years" value="{{v}}">{{v}}</option>
+                    
+                    
+                    </select>
+                  <span class="text-danger" *ngIf="!fform.get('yearofsalary').value && submitted">Year required!</span> 
+                </div>
+                    </div>
+                    <div class="col-sm-3">
+                <div class="form-group">
+                    <!-- <mat-form-field  class="col-12">
+                        <mat-label>Select Driver Name</mat-label>
+                        <mat-select formControlName="driverid" required>
+                          <mat-option *ngFor="let v of driverlist" [value]="v.id">
+                            {{v.name}} 
+                          </mat-option>
+                        </mat-select>
+                     
+                      </mat-form-field>-->
+                      <label for="exampleInputPassword1">Month</label>
+                                                                        <select class="form-control" (change)="getsalary()"  formControlName="monthofsalary">
+                                                                          <option value="null" selected>Select Month</option>
+                                                                            <option value="1">Jan</option>
+                                                                            <option value="2">Feb</option>
+                                                                            <option value="3">March</option>
+
+                                                                            <option value="4">April</option>
+                                                                            <option value="5">May</option>
+                                                                            <option value="6">June</option>
+
+                                                                            <option value="7">July</option>
+                                                                            <option value="8">Aug</option>
+                                                                            <option value="9">Sept</option>
+
+                                                                            <option value="10">Oct</option>
+                                                                            <option value="11">Nov</option>
+                                                                            <option value="12">Dec</option>
+                                                                          </select>
+                                                                          <span class="text-danger" *ngIf="!fform.get('monthofsalary').value && submitted">Month required!</span> 
+                    </div> </div> 
+                    <div class="col-sm-3"> 
+                      <label for="exampleInputPassword1">Salary Of month</label>
+                      <input type="number"  class="form-control" formControlName="salaryofthemonth" placeholder="Salary Of month">
+                    </div>
+<div class="col-sm-3"> 
+  <label for="exampleInputPassword1">Payment Type</label>
+  <select class="form-control"  formControlName="salarytype" placeholder="Select Payment By">
+    <option value="null">Select Payment Type</option>
+<option value="Cash">Cash</option>
+<option value="Credit">Credit</option>
+
+</select>
+<span class="text-danger" *ngIf="!fform.get('salarytype').value && submitted">Salary Type required!</span> 
+</div>
+<div class="col-sm-3">
+  <label for="exampleInputPassword1" >Deduct Advance Amt</label>
+  <div class="form-group" style="margin-top: 0px;">
+    <!-- <mat-form-field>
+      <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+      <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+       Amount<strong>required!</strong>
+      </mat-error>
+    </mat-form-field> -->
+     
+      <input id="deductamt" type="radio" (change)="changepstatus($event)" formControlName="flgdeductamt" value="true" name="deductamt">
+      <label style="padding: 5px;" for="deductamt">Yes</label>
+      <input id="deductamt" type="radio" (change)="changepstatus($event)" formControlName="flgdeductamt" value="false" style="margin-left: 15px; padding: 15px;" name="deductamt">
+      <label style="padding: 5px;" for="deductamt">No</label>
+       
+       
+      <!-- <span class="text-danger" *ngIf="!fform.get('rate').value && submitted">Rate required!</span>  -->
+    </div></div>
+    <div class="col-sm-3">
+      <label for="exampleInputPassword1" >Deduct Full Advance Amt</label>
+      <div class="form-group" style="margin-top: 0px;">
+        <!-- <mat-form-field>
+          <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+          <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+           Amount<strong>required!</strong>
+          </mat-error>
+        </mat-form-field> -->
+         
+          <input id="deductfullamt" type="radio" (change)="chnagefullamount($event)" formControlName="flgdeductfullamt"  value="true" name="deductfullamt">
+          <label style="padding: 5px;" for="deductfullamt">Yes</label>
+          <input id="deductfullamt" type="radio" (change)="chnagefullamount($event)" formControlName="flgdeductfullamt" value="false" style="margin-left: 15px; padding: 15px;" name="deductfullamt">
+          <label style="padding: 5px;" for="deductfullamt">No</label>
+           
+           
+          <!-- <span class="text-danger" *ngIf="!fform.get('rate').value && submitted">Rate required!</span>  -->
+        </div></div>
+    <div class="col-sm-3">
+
+      <div class="form-group">
+        <!-- <mat-form-field>
+          <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+          <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+           Amount<strong>required!</strong>
+          </mat-error>
+        </mat-form-field> -->
+          <label for="exampleInputPassword1">Advance Amount Deduct</label>
+           <input type="number" (keyup)="onKeyUpEvent($event)" class="form-control" formControlName="advanceamtdeduct" placeholder="advance amount">
+          <!-- <span class="text-danger" *ngIf="!fform.get('liter').value && submitted">Liter required!</span>  -->
+        </div></div>
+                                                                    <div class="col-sm-3">
+
+                                                                    <div class="form-group">
+                                                                      <!-- <mat-form-field>
+                                                                        <input matInput placeholder="Amount"  (keypress)="keyPress($event)" maxlength="12" formControlName="totalamount" required>
+                                                                        <mat-error *ngIf="!fform.get('totalamount').value && submitted">
+                                                                         Amount<strong>required!</strong>
+                                                                        </mat-error>
+                                                                      </mat-form-field> -->
+                                                                        <label for="exampleInputPassword1">Salary pay of Month</label>
+                                                                         <input type="number"  class="form-control" formControlName="salarypayofmonth" placeholder="Amount">
+                                                                        <!-- <span class="text-danger" *ngIf="!fform.get('totalamount').value && submitted">Amount required!</span>  -->
+                                                                      </div></div>
+                                                                      <div class="col-sm-3">
+
+                                                                        <div class="form-group">
+                                                                          <!-- <mat-form-field  class="col-12"> 
+                                                                            <mat-label>Date</mat-label>
+                                                                            <input matInput formControlName="fueldate" [matDatepicker]="picker" placeholder="Date" required>
+                                                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                                            <mat-datepicker #picker></mat-datepicker>
+                                                                            <mat-error *ngIf="!fform.get('fueldate').value && submitted">
+                                                                              date <strong>required!</strong>
+                                                                            </mat-error>
+                                                                          </mat-form-field> -->
+                                                                            <label for="exampleInputPassword1">Date</label>
+                                                                            <input type="Date" class="form-control" formControlName="dtsalaryDate">
+                                                                            <span class="text-danger" *ngIf="!fform.get('dtsalaryDate').value && submitted">  date required!</span>
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="col-sm-3"> 
+                                                                          <div class="form-group">
+                                                                            <label for="exampleInputPassword1">Remark</label>
+                                                                            <textarea class="form-control" formControlName="remark"  id="inputExperience" placeholder="Remark"></textarea>
+                                                                          </div>
+                                                                        </div>
+                                                                         </div>
+                                                                      </div>
+             
+
+                                                                    <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary" style="margin-left: 5px;" >Clear</button>
+                <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/driversalarylist']" >Back</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+     </div></section></div> 

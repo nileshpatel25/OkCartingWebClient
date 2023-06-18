@@ -47,7 +47,12 @@
                       <th>Vehicle Name</th>
                       <th>Driver Name</th>                     
                       <th>Date</th>
+                      <th>Rate</th>
+                      <th>liter</th>
                       <th>Amount</th>
+                      <th>
+                        Receipt
+                      </th>
                      
                       <th>Action</th>
                     </tr>
@@ -60,7 +65,17 @@
                        {{d.drivername}}
                       </td>
                       <td>{{d.fueldate}}</td>
+                      <td>
+{{d.rate}}
+                      </td>
+                      <td>
+{{d.liter}}
+                      </td>
                       <td>{{d.totalamount}}</td>
+                      <td>
+                        <img [src]="d.receipt" alt="img" width="50px" height="50px" >
+                       
+                      </td>
                      
                       <td>
                         <button [routerLink]="['/addfuel']" [queryParams]="{id: d.id}" class="btn btn-default btn-sm" style="cursor: pointer;"><i class="far fa-edit text-primary"></i></button>

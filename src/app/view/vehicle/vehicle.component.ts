@@ -61,7 +61,10 @@ vehiclename:[null,Validators.required]
         {
   this.getallvehiclelistbyuser();
   this.toast.success(resp.message);
-  this.reset();
+  this.submitted=false;
+  this.vform.reset(  );
+  this.vform.clearAsyncValidators();
+  
 //   this.vform.reset({
 //     id:'0',
 //     userid:localStorage.id,
@@ -178,7 +181,8 @@ addvehiclerequest(){
       {
 
 this.toast.success(resp.message);
-this.reset();
+this.vmform.reset();
+this.vmform.clearAsyncValidators();
 //   this.vform.reset({
 //     id:'0',
 //     userid:localStorage.id,

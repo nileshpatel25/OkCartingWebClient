@@ -1,0 +1,147 @@
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Expense</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Expense Type</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-5">
+          <!-- general form elements -->
+          <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">Add new Expense</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form [formGroup]="vform" (ngSubmit)="addvehicle()">
+              <div class="card-body">
+                
+                <div class="form-group">
+                 
+                   
+                    <select class="form-control" formControlName="expensetypeid" (change)="getallexpensedetailbyid($event.target.value)">
+                     <option value="null">Select Expense Type</option>
+                     <option *ngFor="let v of expensetypelist" value="{{v.id}}">{{v.name}} </option>
+                    
+                   </select>
+                   <span class="text-danger" *ngIf="!vform.get('expensetypeid').value && submitted">Expense type name required!</span> 
+             
+               
+                  </div>
+
+               
+
+                <div class="form-group">
+                    <input type="text" (keypress)="keyPress($event)" class="form-control" formControlName="amount" placeholder="Amount">
+                    <span class="text-danger" *ngIf="!vform.get('amount').value && submitted">Amount required!</span> 
+                  </div>
+                 
+                      <div class="form-group">
+                         <select class="form-control"  formControlName="paymentby" placeholder="Select Payment By">
+                          <option value="null">Select Payment By</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Cheque">Cheque</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span class="text-danger" *ngIf="!vform.get('paymentby').value && submitted">payment by required!</span> 
+                  </div>
+              <div class="form-group" *ngIf="vform.get('paymentby').value=='Cheque'">
+                <input formControlName="chequeno" class="form-control" placeholder="Cheque No">
+              </div>
+           
+              <div class="form-group">
+                <input type="Date" class="form-control"  formControlName="expensedate" placeholder="Date of Payment">
+                <span class="text-danger" *ngIf="!vform.get('expensedate').value && submitted">date required!</span>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" formControlName="remark"  id="inputExperience" placeholder="Remark"></textarea>
+              </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+               
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset"  style="margin-left: 5px;" class="btn btn-primary">Clear</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+    
+        <div class="col-md-7">
+            <div class="card card-info">
+              <!-- <div class="card-header">
+                <h3 class="card-title">Vehicle List</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="card-body table-responsive p-0">
+                  <!-- <div class="table-responsive p-0"> -->
+                  <table class="table table-hover text-nowrap">
+                  <thead>                  
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Expense Type</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      
+                      <th>Remark</th>
+                     
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let v of expensedetaillist;let  i=index;">
+                      <td>{{i+1}}</td>
+                      <td>
+                      {{v.expensename}}
+                      </td>
+                      <td>
+{{v.dateofexpense}}
+                      </td>
+                      <td>{{v.amount}}</td>
+                    
+                      <td>{{v.remark}}</td>
+                      <td>
+<button (click)="edit(v.id)" class="btn btn-default btn-sm" style="cursor: pointer;"><i class="far fa-edit text-primary"></i></button>
+<button class="btn btn-default btn-sm" (click)="delete(v.id)" style="margin-left: 5px;"><i class="fa fa-trash text-danger"></i></button>  
+                      </td>
+                    </tr>
+                     </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item" [ngClass]="{'disabled': pageNumber === 1}"><a class="page-link" style="cursor: pointer;" (click)="prev()">&laquo;</a></li>
+                
+                  <li class="page-item" [ngClass]="{'disabled': pageNumber === lastPage}"><a class="page-link" style="cursor: pointer;" (click)="next()">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+
+            </div>
+    </div>
+      </div></div></section>
+    
+    </div> 
+
+    

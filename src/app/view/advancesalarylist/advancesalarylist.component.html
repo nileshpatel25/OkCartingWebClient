@@ -52,6 +52,9 @@
                           <th>Month</th>
                           <th>Year</th>
                           <th>Advance Salary Amt</th>
+                          <th>
+                            Remark
+                          </th>
                        <th>Action</th>
                         </tr>
                       </thead>
@@ -71,6 +74,9 @@
                           {{d.advancesalaryyear}}
                         </td>
                           <td>{{d.advancesalaryamt}}</td>
+                          <td>
+                            {{d.remark}}
+                          </td>
                           <td>
                             <button [routerLink]="['/addadvanceslary']" [queryParams]="{id: d.id}" class="btn btn-default btn-sm" style="cursor: pointer;"><i class="far fa-edit text-primary"></i></button>
                             <button class="btn btn-default btn-sm" (click)="delete(d.id)" style="margin-left: 5px;"><i class="fa fa-trash text-danger"></i></button>  

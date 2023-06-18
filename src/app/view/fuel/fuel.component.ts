@@ -16,6 +16,7 @@ export class FuelComponent implements OnInit {
   vehiclelist:any=[];
   driverlist:any=[];
   petrolpumplist:any=[];
+  fileData: File=null;
 id:any;
  
   constructor(
@@ -37,8 +38,11 @@ id:['0'],
 userid:[localStorage.id],
 petrolpumpid:['',Validators.required],
 vehicleid:['',Validators.required],
+paymenttype:['',Validators.required],
+rate:['0',Validators.required],
+liter:['0',Validators.required],
 driverid:[''],
-totalamount:['',Validators.required],
+totalamount:['0',Validators.required],
 fueldate:['',Validators.required]
 
     });
@@ -57,14 +61,30 @@ fueldate:['',Validators.required]
         userid:localStorage.id,
         petrolpumpid:driverinfo[0].petrolpumpid,
         vehicleid:driverinfo[0].vehicleid,
+        paymenttype:driverinfo[0].paymenttype,
+        rate:driverinfo[0].rate,
+        liter:driverinfo[0].liter,
       driverid:driverinfo[0].driverid,
       totalamount:driverinfo[0].totalamount,
-      fueldate: this.formatDate(driverinfo[0].fueldate)
+      fueldate: this.formatDate(driverinfo[0].datefuel)
       });
     });
   }
   
-  
+  filereceiptprogress(fileInput:any){
+    this.fileData=fileInput.target.files[0] as File
+  }
+
+  uploadreceipt(id){
+    const formdata=new FormData();
+    formdata.append('File',this.fileData);
+    formdata.append('Id',id);
+    if(this.fileData!=null){
+      this.apiservice.postapi('api/fuel/uploadreceipt', formdata).subscribe((resp) => {
+            
+      });
+    }
+  }
   getvehiclelist(){
     this.apiservice.postapi('api/vehicle/allvehiclelistbyuser?userid='+localStorage.id).subscribe(resp=>{
   this.vehiclelist=resp.lstItems;
@@ -89,6 +109,9 @@ fueldate:['',Validators.required]
   }
   this.apiservice.postapi('api/fuel/addfuel',this.fform.value).subscribe(resp=>{
     if(resp.status){
+      if(this.fileData!=null){
+        this.uploadreceipt(resp.objItem);
+        }
   this.reset();
   this.router.navigate(['/fuel']);
     }
@@ -119,4 +142,17 @@ fueldate:['',Validators.required]
     if (day.length < 2) day = '0' + day;
     return [year, month, day].join('-');
   }
+
+
+  onKeyUpEvent(event: any){
+
+    console.log(event.target.value);
+    this.fform.get('totalamount').setValue((this.fform.get('rate').value) * event.target.value);
+    //const control = <FormArray>this.dform.get('jobworkdetails');
+    // .perhourrate
+    // control.controls[i].get('totalamount').setValue(control.controls[i].get('perhourrate').value * event.target.value);
+    
+   // this.dform.get('totalamount').setValue((this.dform.get('perhourrate').value) * event.target.value);
+  }
+
 }

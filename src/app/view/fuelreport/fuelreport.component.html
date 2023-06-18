@@ -1,0 +1,122 @@
+
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Fuel Report</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                <li class="breadcrumb-item active">Fuel Report</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+<section class="content">
+    <div class="container-fluid">
+     
+      <div class="row">
+
+
+
+        
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+              
+             
+                    <form [formGroup]="fform" (ngSubmit)="onsubmit()">
+                        <div class="card-body">
+          
+                          <div class="row">
+                              <div class="col-sm-3">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">From Date</label>
+                            <input type="Date" class="form-control" formControlName="fromdate">
+                            <span class="text-danger" *ngIf="!fform.get('fromdate').value && submitted"> from date required!</span>
+                          </div>
+                              </div>
+                              <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">To Date</label>
+                                    <input type="Date" class="form-control" formControlName="todate">
+                                    <span class="text-danger" *ngIf="!fform.get('todate').value && submitted"> to date required!</span>
+                                </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" style="margin-top: 47px;"></label>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                            </div>
+                          </div>
+                        </div>
+                    </form>
+                    <div class="card-tools">
+                        <a class="btn btn-info" href="{{pdfpath}}" target="_blank">
+                            <i class="fas fa-plus"> View PDF</i>
+                        </a>
+                      </div>
+              </div>
+             
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <!-- <div class="table-responsive p-0"> -->
+                <table class="table table-hover text-nowrap">
+                  <thead>                  
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Date</th>
+                      <th> DriverName</th>                     
+                    <th>Name</th>
+                    <th>Rate</th>
+                    <th>Liter</th>
+                      <th>
+                        Amount
+                      </th>
+                     
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let d of hiringList;let i=index;"> 
+                        <td>{{i+1}}</td>
+                      <td>{{d.fueldate | date:'shortDate'}}</td>
+                     
+                      <td>{{d.drivername}}</td>
+                     
+                      <td>{{d.name}}</td>
+                      <td>{{d.rate}}</td>
+                     
+                      <td>{{d.liter}}</td> <td>{{d.totalamount}}</td>
+                     
+                   
+                     
+                     
+                    </tr>
+                  
+                  </tbody>
+                </table>
+                <!-- </div> -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <!-- <li class="page-item" [ngClass]="{'disabled': pageNumber === 1}"><a class="page-link" style="cursor: pointer;" (click)="prev()">&laquo;</a></li>
+                
+                  <li class="page-item" [ngClass]="{'disabled': pageNumber === lastPage}"><a class="page-link" style="cursor: pointer;" (click)="next()">&raquo;</a></li>
+               -->
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+
+    
+    </div>
+      </div></div></section></div> 

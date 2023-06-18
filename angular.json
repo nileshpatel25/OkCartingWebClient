@@ -24,11 +24,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.css" ,
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
-              "node_modules/admin-lte/docs_html/assets/css/adminlte.min.css"
+              "node_modules/admin-lte/docs_html/assets/css/adminlte.css",             
+              "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/ngx-ui-switch/ui-switch.component.css"
+            
+             
+              
+              
             ],
             "scripts": [
               "node_modules/admin-lte/plugins/jquery/jquery.js",
@@ -41,7 +46,11 @@
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
               "node_modules/admin-lte/plugins/jquery-mapael/maps/usa_states.js",
               "node_modules/admin-lte/plugins/chart.js/Chart.js",
-              "node_modules/admin-lte/dist/js/pages/dashboard2.js"
+              "node_modules/admin-lte/dist/js/pages/dashboard2.js",
+              "node_modules/jquery/dist/jquery.min.js"         
+                    
+      
+             
             ]
           },
           "configurations": {
@@ -104,7 +113,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AppService } from 'src/app/shared/app.service';
  import { ModalDirective } from 'ngx-bootstrap/modal/public_api';
  import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'; 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,19 +29,29 @@ export class DashboardComponent implements OnInit {
   constructor(
     private apiservice:ApiService,
     private appservice:AppService,
+    private router:Router,
     private toastr:ToastrService,private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
+    const firstTime = localStorage.getItem('key')
+      if(!firstTime){
+        localStorage.setItem('key','loaded')
+       window.location.reload()
+      }else {
+        localStorage.removeItem('key') 
+      }
     this.appservice.checktoken();
     this.getallcustomerjobworklist();
     this.getallcustomerjobworkpendingamountlist();
     this.getallvehiclelistbyuserid();
     this.getallCustomeristbyuserid();
     this.getallpendingamountlist();
+    
   }
   getallcustomerjobworklist()
   {
+    
     this.apiservice.postapi('api/jobwork/alljobworkdetails?pageNo='+this.pageNumber+'&pageSize='+this.pagesize+'&userid='+localStorage.id).subscribe(resp=>{
       this.jobworklist=resp.lstItems;
       this.lastPage=resp.lstItems.length/this.pagesize;
@@ -92,6 +103,7 @@ export class DashboardComponent implements OnInit {
       this.receivedamount=resp.lstItems;
       this.pendingamount=resp.objItem;
     });
+    
   }
 
   next()

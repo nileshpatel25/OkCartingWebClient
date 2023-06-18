@@ -36,7 +36,13 @@ export class AdvancesalarylistComponent implements OnInit {
   }
   delete(Id:string)
   {
-    
+    this.apiservice.postapi('api/driveradvancesalary/deleteadvancesalary?id='+Id).subscribe(resp=>{
+      if(resp.status)
+      {
+      this.getalladvancelist();
+      this.toastr.success(resp.message);
+      }
+      });
   }
   next()
   {

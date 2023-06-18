@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~bootstrap/scss/bootstrap';
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+
+
+@import '~ionicons/css/ionicons.min.css';
+
+@import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
+@import '~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css';
+@import '~admin-lte/dist/css/adminlte.min.css';
+
+@import '~ngx-toastr/toastr.css';
+@import '~ngx-ui-switch/ui-switch.component.scss';
+.custom-switches {
+  .switch {
+    background: #fb6542;
+    small {
+      background: #375e97;
+    }
+    &.checked {
+      background: #a00a0a;
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";

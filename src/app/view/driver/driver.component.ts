@@ -73,9 +73,9 @@ getdriverInfo(id: string){
       adharcardno:driverinfo[0].adharcardno,
       licenseno:driverinfo[0].licenseno,
       perdaysalary:driverinfo[0].perdaysalary,
-      dateofjoining:this.formatDate(driverinfo[0].dateofjoining),
+      dateofjoining:this.formatDate(driverinfo[0].joingdate),
       hireon:driverinfo[0].hireon,
-      licensevalidupto:this.formatDate(driverinfo[0].licensevalidupto)
+      licensevalidupto:this.formatDate(driverinfo[0].licensevaliduptovalid)
     });
   });
 }

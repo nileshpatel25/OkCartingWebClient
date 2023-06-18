@@ -45,7 +45,7 @@
                     <mat-form-field class="col-10">
                       <mat-label>Select Customer Name</mat-label>
                       <mat-select formControlName="customerid">
-                        <mat-option *ngFor="let v of driverlist" [value]="v.id">
+                        <mat-option *ngFor="let v of customerlist" [value]="v.id">
                           {{v.name}} 
                         </mat-option>
                       </mat-select>

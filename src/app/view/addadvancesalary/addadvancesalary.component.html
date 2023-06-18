@@ -133,6 +133,12 @@
                                                                             <input type="text" class="form-control" formControlName="advancesalaryamt" (keypress)="keyPress($event)">
                                                                               <span class="text-danger" *ngIf="!aform.get('advancesalaryamt').value && submitted">Advance Amount required!</span> 
                                                                             </div></div>
+                                                                            <div class="col-sm-3"> 
+                                                                              <div class="form-group">
+                                                                                <label for="exampleInputPassword1">Remark</label>
+                                                                                <textarea class="form-control" formControlName="remark"  id="inputExperience" placeholder="Remark"></textarea>
+                                                                              </div>
+                                                                            </div>
                                                                          </div>
                                                                       </div>
              
