@@ -73,7 +73,7 @@
                 </p> -->
                 <div class="form-group">
                   <mat-form-field class="col-12">
-                    <input matInput [textMask]="{mask: mask}" placeholder="Vehicle Registartion no"  formControlName="vehiclenumber" required >
+                    <input matInput  placeholder="Vehicle Registartion no" oninput="this.value = this.value.toUpperCase()"  formControlName="vehiclenumber" required >
                     <mat-error *ngIf="!vform.get('vehiclenumber').value && submitted">
                       vehicle regitration no <strong>required!</strong>
                     </mat-error>

@@ -37,7 +37,7 @@ totalrow:number;
     customerid:['',Validators.required],
     jobworkid:['',Validators.required],
     paymenttype:['Received'],
-    paymentby:['',Validators.required],
+    paymentby:['select',Validators.required],
     chequeno:[''],
     paymentdate:['',Validators.required],
     amount:['',Validators.required],
@@ -109,6 +109,7 @@ this.apiservice.postapi('api/customerpayment/addcustomerpayment',this.pform.valu
   
     this.reset();
     this.toastr.success(resp.message);
+
     this.getallcustomerjobworklist(this.pform.get('customerid').value);
    
    
@@ -130,19 +131,24 @@ if(resp.status){
 }
         });
       }
+
+clear(){
+  this.pform.reset();
+}
+
       reset(){
          
         this.pform.reset({
-          id:['0'],
-          userid:[localStorage.id],
+          id:'0',
+          userid:localStorage.id,
           customerid:this.pform.get('customerid').value,
-          paymenttype:['Received'],
-           jobworkid:' ',
-          paymentby:' ',
-          chequeno:' ',
-          paymentdate:' ',
-          amount:' ',
-          remark:' '
+          paymenttype:'Received',
+           jobworkid:'',
+          paymentby:'select',
+          chequeno:'',
+          paymentdate:'',
+          amount:'',
+          remark:''
         });
       
       }

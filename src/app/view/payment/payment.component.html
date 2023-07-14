@@ -80,7 +80,7 @@
                         <div class="col-12">
                           <div class="form-group">
                              <select class="form-control"  formControlName="paymentby" placeholder="Select Payment By">
-                              <option value="">Select Payment By</option>
+                              <option value="select">Select Payment By</option>
                         <option value="Cash">Cash</option>
                         <option value="Cheque">Cheque</option>
                         <option value="Other">Other</option>
@@ -158,7 +158,7 @@
                  
                   <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="submit" class="btn btn-primary" (click)="reset()" style="margin-left: 5px;" >Clear</button>
+                    <button type="submit" class="btn btn-primary" (click)="clear()" style="margin-left: 5px;" >Clear</button>
                     <!-- <a class="btn btn-primary" style="margin-left: 5px;" [routerLink]="['/jobworkdetail']" >Back</a> -->
                   </div>
                  
