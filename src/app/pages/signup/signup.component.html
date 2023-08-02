@@ -35,9 +35,11 @@
                 <span class="text-danger" *ngIf="!loginform.get('email').value && formSubmitted">
                   Enter your email
                 </span>
+
+                <span class="text-danger" *ngIf="loginform.get('email').errors?.email">Email must be a valid email address</span>
               </p>
               <div class="input-group mb-3">
-                <input type="text" formControlName="phonenumber" maxlength="10" class="form-control" placeholder="Phone Numeber">
+                <input type="text" formControlName="phonenumber" maxlength="10" (keypress)="keyPress($event)" class="form-control" placeholder="Phone Numeber">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -47,6 +49,9 @@
               <p>
                 <span class="text-danger" *ngIf="!loginform.get('phonenumber').value && formSubmitted">
                   Enter your Phone Numebr
+                </span>
+                <span class="text-danger" *ngIf="loginform.get('phonenumber').errors?.minlength">
+                  PhoneNumebr must be at least 10 digit
                 </span>
               </p>
               <div class="input-group mb-3">
@@ -61,7 +66,19 @@
                 <span class="text-danger" *ngIf="!loginform.get('password').value && formSubmitted">
                   Enter your password
                 </span>
+                <!-- <span class="text-danger" *ngIf="!loginform.get('password').errors?.pattern | json">Password must be </span> -->
               </p>
+              <span class="text-danger" *ngIf="loginform.get('password').errors?.minlength">
+                Password must be at least 8 characters
+              </span>
+          
+              <span class="text-danger" *ngIf="loginform.get('password').hasError('passwordStrength')">
+                {{loginform.get('password').errors['passwordStrength']}}
+              </span>
+              <!-- <p>
+              password must be 8 to 10 characters which contain at  one uppercase and one lowercase letter and one numeric digit and one special characters
+              Like Admin123@
+              </p> -->
               <div class="row">
                 <div class="col-8">
                   <!-- <div class="icheck-primary">

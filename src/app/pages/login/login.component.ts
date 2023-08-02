@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AppService } from 'src/app/shared/app.service';
 import { HttpHeaders } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -59,5 +60,13 @@ login()
   }
 }
 
+keyPress(event:any){
+ 
+  const pattern = /[0-9]/;
+  let inputChar=String.fromCharCode(event.charCode);
+  if(!pattern.test(inputChar) && event.charCode!='0'){
+    event.preventDefault();
+  }
+}
 
 }

@@ -11,7 +11,7 @@
   
         <form [formGroup]="loginform" (ngSubmit)="login()">
           <div class="input-group mb-3">
-            <input type="text" formControlName="username" class="form-control" placeholder="Username">
+            <input type="text" formControlName="username" maxlength="10" (keypress)="keyPress($event)" class="form-control" placeholder="Username(enter your mobile no)">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
